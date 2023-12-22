@@ -13,9 +13,12 @@ industry = pd.DataFrame(conn.query("SELECT DISTINCT industry FROM job;"))
 location = pd.DataFrame(conn.query("SELECT DISTINCT address FROM job;"))
 
 data = pd.DataFrame(df)
+col1, col2 = st.columns((2))
 
-selected_industries = st.sidebar.multiselect("Select Industries", industry )
-selected_city = st.sidebar.multiselect("Select Address", location)
+with col1:
+    selected_industries = st.multiselect("Select Industries", industry )
+with col2:
+    selected_city = st.multiselect("Select Address", location)
 
 if selected_industries and selected_city:
     selected_industries = ', '.join(map(lambda x: f"'{x}'", selected_industries))
@@ -41,7 +44,7 @@ else:
 industry_counts = pd.DataFrame(conn.query(query))
 industry_counts.columns = ['industry', 'count']
 
-col1, col2 = st.columns((2))
+
 with col1:
     st.subheader(f"Number of Jobs in Each Industry ")
     fig = px.bar(
