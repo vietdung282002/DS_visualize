@@ -20,6 +20,8 @@ with col1:
 with col2:
     selected_city = st.multiselect("Select Address", location)
 
+
+st.dataframe(location)
 if selected_industries and selected_city:
     selected_industries = ', '.join(map(lambda x: f"'{x}'", selected_industries))
     selected_city = ', '.join(map(lambda x: f"'{x}'", selected_city))
@@ -33,13 +35,6 @@ elif selected_city and not selected_industries:
 else:
     query = "SELECT industry, COUNT(*) AS count FROM job GROUP BY industry;"
 
-# st.write(query)
-
-# if selected_industries:
-#     data = data[data["industry"].isin(selected_industries)]
-    
-# industry_counts = data['industry'].value_counts().reset_index()
-# industry_counts.columns = ['industry', 'count']
 
 industry_counts = pd.DataFrame(conn.query(query))
 industry_counts.columns = ['industry', 'count']
