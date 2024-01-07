@@ -55,13 +55,6 @@ with col1:
     st.pyplot(fig)
     
 with col2:
-    # st.subheader("Biểu Đồ Tròn")
-    # fig = px.pie(
-    #     values=df2.values,
-    #     names=df2.index,
-    #     title=f"Tỉ Lệ Nam/Nữ cho Ngành Nghề {selected_industries2}",
-    # )
-    # st.plotly_chart(fig, use_container_width=True)
     st.subheader(f"Tỷ lệ tuyển dụng giới tính ngành {selected_industries2}")
     fig = px.pie(
         df2,

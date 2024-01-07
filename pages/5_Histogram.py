@@ -33,7 +33,7 @@ with col1:
     st.subheader('Histogram Distribution of Education Levels')
     fig_edu = plt.figure(figsize=(11, 7))
     plt.hist(df['education_level'], bins=35, edgecolor='black')
-    plt.title(f'Phân phối Education Levels')
+    plt.title(f'Tần suất Education Levels')
     plt.xlabel('Education Levels')
     plt.ylabel('Frequency')
     plt.xticks(rotation=90)

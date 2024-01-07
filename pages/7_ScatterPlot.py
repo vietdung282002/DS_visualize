@@ -37,7 +37,8 @@ with col1:
     sc = ax.scatter(df["salary_min"], df["salary_max"], c=df["job_yoe_min"], cmap="viridis", s=100, alpha=0.75, marker='o')
     ax.set_xlabel("Min Salary (triệu VND)")
     ax.set_ylabel("Max Salary (triệu VND)")
-    ax.set_title("Phụ thuộc số năm kinh nghiệm của mức lương")
+    ax.set_title("Sự phụ thuộc của mức lương dựa vào số năm kinh nghiệm")
+
 
     # Add colorbar
     cbar = plt.colorbar(sc, ax=ax, label="Years of Experience (Min)")
@@ -50,7 +51,7 @@ with col2:
     sc = ax.scatter(df["salary_min"], df["salary_max"], c=df["job_yoe_max"], cmap="viridis", s=100, alpha=0.75, marker='o')
     ax.set_xlabel("Min Salary (triệu VND)")
     ax.set_ylabel("Max Salary (triệu VND)")
-    ax.set_title("Phụ thuộc số năm kinh nghiệm của mức lương")
+    ax.set_title("Sự phụ thuộc của mức lương dựa vào số năm kinh nghiệm")
 
     # Add colorbar
     cbar = plt.colorbar(sc, ax=ax, label="Years of Experience (Max)")

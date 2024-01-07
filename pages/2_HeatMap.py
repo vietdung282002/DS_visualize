@@ -77,6 +77,6 @@ vietnam.boundary.plot(ax=ax, linewidth=0.5)
 merged.plot(column='job_count', cmap='YlOrRd', linewidth=0.8, ax=ax, edgecolor='0.8', legend=True, cax=cax)
 
 # Set plot title and legend
-plt.title('Job Distribution in Vietnam')
+plt.title('Phân phối nhu cầu tuyển dụng trên cả nước',loc = 'right')
 plt.show()
 st.pyplot(plt)
