@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.express as px
 
 # Đọc dữ liệu từ tệp CSV
-file_path = r"D:\Codepython\Data Science\New folder\DS_visualize\job.csv"
+file_path = r"job.csv"
 df = pd.read_csv(file_path)
 
 # Tiêu đề cho trang

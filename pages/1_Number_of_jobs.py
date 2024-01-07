@@ -10,7 +10,7 @@ st.title("Nhu cầu tuyển dụng của các ngành nghề tại các tỉnh th
 df = conn.query("SELECT * FROM job;", ttl="10m")
 
 industry = pd.DataFrame(conn.query("SELECT DISTINCT industry FROM job;"))
-location = pd.DataFrame(conn.query("SELECT DISTINCT address FROM job;"))
+location = pd.DataFrame(conn.query("SELECT DISTINCT job_address FROM job;"))
 
 data = pd.DataFrame(df)
 col1, col2 = st.columns((2))
@@ -21,17 +21,16 @@ with col2:
     selected_city = st.multiselect("Select Address", location)
 
 
-st.dataframe(location)
 if selected_industries and selected_city:
     selected_industries = ', '.join(map(lambda x: f"'{x}'", selected_industries))
     selected_city = ', '.join(map(lambda x: f"'{x}'", selected_city))
-    query = f"SELECT industry, COUNT(*) AS count FROM job WHERE industry IN ({selected_industries}) AND address IN ({selected_city}) GROUP BY industry;"
+    query = f"SELECT industry, COUNT(*) AS count FROM job WHERE industry IN ({selected_industries}) AND job_address IN ({selected_city}) GROUP BY industry;"
 elif selected_industries and not selected_city: 
     selected_industries = ', '.join(map(lambda x: f"'{x}'", selected_industries))
     query = f"SELECT industry, COUNT(*) AS count FROM job WHERE industry IN ({selected_industries}) GROUP BY industry;"
 elif selected_city and not selected_industries:
     selected_city = ', '.join(map(lambda x: f"'{x}'", selected_city))
-    query = f"SELECT industry, COUNT(*) AS count FROM job WHERE address IN ({selected_city}) GROUP BY industry;"
+    query = f"SELECT industry, COUNT(*) AS count FROM job WHERE job_address IN ({selected_city}) GROUP BY industry;"
 else:
     query = "SELECT industry, COUNT(*) AS count FROM job GROUP BY industry;"
 
@@ -41,7 +40,7 @@ industry_counts.columns = ['industry', 'count']
 
 
 with col1:
-    st.subheader(f"Number of Jobs in Each Industry ")
+    st.subheader(f"Number of Jobs in Each Industry in Hà Nội  ")
     fig = px.bar(
             industry_counts,
             x='industry',
