@@ -21,9 +21,9 @@ selected_industries = st.multiselect("Select Industries", industry )
 
 if selected_industries:
     selected_industries = ', '.join(map(lambda x: f"'{x}'", selected_industries))
-    query = f"SELECT job_level,COUNT(*) AS count FROM job WHERE industry IN ({selected_industries}) GROUP BY job_level"
+    query = f"SELECT job_level,COUNT(*) AS count FROM job WHERE industry IN ({selected_industries}) and job_level!= 'not-found' GROUP BY job_level"
 else:
-    query = f"SELECT job_level,COUNT(*) AS count FROM job GROUP BY job_level"
+    query = f"SELECT job_level,COUNT(*) AS count FROM job where job_level!= 'not-found' GROUP BY job_level"
     
 df = pd.DataFrame(conn.query(query))
 st.subheader(f"Job level count ")
