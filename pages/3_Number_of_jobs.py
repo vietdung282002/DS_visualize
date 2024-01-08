@@ -40,7 +40,7 @@ industry_counts.columns = ['industry', 'count']
 
 
 with col1:
-    st.subheader(f"Number of Jobs in Each Industry in Hà Nội  ")
+    st.subheader(f"Number of Jobs in Each Industry")
     fig = px.bar(
             industry_counts,
             x='industry',
@@ -49,7 +49,7 @@ with col1:
             labels={'industry': 'Industry', 'count': 'Number of Jobs'},
             color='industry',
             height=500,
-            title=f"Number of Jobs in Each Industry in Hà Nội    "
+            title=f"Number of Jobs in Each Industry"
         )
     st.plotly_chart(fig,use_container_width=True, height =300)
     
